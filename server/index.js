@@ -5,7 +5,7 @@ const Connection = require('./db');
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/product");
-// let { expressjwt: jwt } = require("express-jwt");
+ //let { expressjwt: jwt } = require("express-jwt");
 require("dotenv").config();
 Connection();
 

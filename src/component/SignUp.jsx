@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import {useDispatch} from 'react-redux';
  import { registration } from './Redux/actions/authAction';
 // import axios from 'axios';
-
 const SignUp = () => {
 
     const {register, handleSubmit, reset, formState: { errors }} = useForm();
@@ -21,7 +20,6 @@ const dispatch= useDispatch()
       // })
         reset()
     }
-
   return (
     <div className='main'>
          <div className='signUp_main'>
@@ -38,7 +36,6 @@ const dispatch= useDispatch()
                     <p className="errorMsg">First Name is required.</p>
                   )}
                 </div>
-
                 <div className='input_position'>
                     <p>Last Name:</p>
                     <input  {...register("lastname", {
@@ -50,7 +47,6 @@ const dispatch= useDispatch()
                     <p className="errorMsg"> Last Name is required.</p>
                   )}
                 </div>
-
                 <div className='input_position'>
                     <p>Email:</p>
                     <input {...register("email", {
@@ -65,12 +61,10 @@ const dispatch= useDispatch()
                   <p className="errorMsg">Email is not valid.</p>
                 )}
                 </div>
-
                 <div className='input_position'>
                     <p>Password:</p>
                     <input{...register("password", {
                       required: true,
-                      
                     })}
                   />
                   {errors.password && errors.password.type === "required" && (

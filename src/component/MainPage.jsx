@@ -8,18 +8,14 @@ const MainPage = () => {
       return (
         <div>
           <Header/>
-
           <div style={{paddingTop:'4.5rem'}}>
           <Slider/>
-          </div>
-          
-          
+          </div> 
           <div style={{width:'100%'}}>
             <Cards/>
           </div>
           </div>
       );
-    };
-    
+    }; 
     export default MainPage;
 

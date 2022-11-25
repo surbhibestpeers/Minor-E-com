@@ -21,7 +21,6 @@ import {useSelector} from 'react-redux';
       }, []);
 
       const handleLogout = () => {
-        
         // window.location.reload();
         navigate("/signin")
         localStorage.clear();
@@ -46,8 +45,7 @@ import {useSelector} from 'react-redux';
             </Badge>
             {prevUser? <button className="white_btn" onClick={handleLogout}>
               Logout</button> : <button className="white_btn"  onClick={()=> navigate("/signin")}>SignIn</button>}
-            </div>
-            
+            </div> 
           </nav>
         </div>
       );

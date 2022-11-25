@@ -4,16 +4,15 @@ import axios from 'axios';
 import "./styles.css";
 import {useDispatch} from 'react-redux';
 import { ADD } from './Redux/actions/actions';
+import Model from './Model';
+
+
 
 const Cards = () => {
 
-  // const [data, setData] = useState('');
-  // console.log(data);
-
-  // console.log("2",localStorage.getItem('token'))
-  
     const [data, setData]= useState([])
-    
+    const [record,setRecord]=useState('')
+    const [display,setDisplay]=useState(false)
     const products=()=> {
       axios.get('http://localhost:8000/api/product/all',{
         // headers: {authorization: JSON.stringify(localStorage.getItem('token'))
@@ -28,14 +27,20 @@ const Cards = () => {
  
     useEffect(()=> {
            products()
+           
     },[])
 
   const dispatch = useDispatch();
 
-
   const send = (e)=>{
     dispatch(ADD(e));
   }
+
+  const show=(e)=> {
+    setRecord(e)
+    setDisplay(true)
+  }
+
 
   return (
     <div className="card_main">
@@ -44,18 +49,14 @@ const Cards = () => {
       {data.length>0 ? ( data.map((element) => {
             return (
               <>
-              <div style={{width:"25%"}}>
-              <Card  style={{
-                      width: "80%",
-                      border: "none",
-                      background: "rgb(230,230,230)",
-                    }}
+              <div className='size'>
+              <Card  
                      className="card_style"
                    >
                   <Card.Img variant="top"
                       src={element.file}
                       style={{ height: "10rem", width: "5rem", margin: "auto" }}
-                      className="mt-3 style_image"/>
+                      className="mt-3 style_image"  onClick={()=>show(element)}/>
                   <Card.Body>
                     <Card.Title>{element.name}</Card.Title>
                     <Card.Text>
@@ -70,15 +71,11 @@ const Cards = () => {
                   </Card.Body>
                 </Card>
               </div>
-                
-                
-              </>
-            )
+              </>)
           }) ): <div className='no-data'>No Data to Show</div>}
-        
-       
-        
       </div>
+        
+  {display ? <Model data={record} /> : ''}
     </div>
   )
 }

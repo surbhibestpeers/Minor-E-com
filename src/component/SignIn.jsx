@@ -41,6 +41,7 @@ const SignIn = () => {
           setError("No Token Generated")
         }
       }
+      
     // try {
     //     axios.post("http://localhost:8000/api/auth", userData).then((response) => {
     //     if(response.data.token){
@@ -58,14 +59,11 @@ const SignIn = () => {
     <div className='main'>
     <div className='signUp_main'>
        <h3 className='heading'>SIGN IN </h3>
-     
           <form onSubmit={handleSubmit}>
-
            <div className='input_position'>
                <p>Email:</p>
                <input type="email" name="email" value={data.email} onChange={handleChange}/>
            </div>
-
            <div className='input_position'>
              <p>Password:</p>
                <input  type="password" name="password" value={data.password} onChange={handleChange}/>
@@ -73,7 +71,7 @@ const SignIn = () => {
            <button className='white_btn ' type="submit">LogIn</button>
            <p>New User? <Link to='/signUp'>Register Here</Link></p>
        </form>
-       {error ? <div>{error.response.data.message}</div>: ''}
+       {error ? <div>"No User Found"</div>: ''}
     </div>
 </div>
   )

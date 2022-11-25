@@ -5,7 +5,7 @@ function Slider() {
     <Carousel>
       <Carousel.Item interval={2000}>
         <img
-          className="d-block w-100"
+          className="d-block w-100 "
           src="https://www.reliancedigital.in/medias/Realme-C-Series-CLP-Banner-22-11-2022.jpg?context=bWFzdGVyfGltYWdlc3wxNjY1OTR8aW1hZ2UvanBlZ3xpbWFnZXMvaDkzL2hlYi85OTIzOTA0MTc2MTU4LmpwZ3xmODEzNDkwMTE0NDUwYTRhMjFiMzcyYmM5OWU0NGRhMTdhZGU1YzBiMzg2NzhjYjQwMGU4YTIwN2Y5MTM3Nzk5"
           alt="First slide"
         />

@@ -5,7 +5,6 @@ function ProtectedRoute({ children }) {
 
     const isLogin = localStorage.getItem("token");
     console.log("Is User Login?", isLogin);
-
     return (
         isLogin ? children : 
         <div>
@@ -13,5 +12,4 @@ function ProtectedRoute({ children }) {
         </div>
     );
 }
-
 export default ProtectedRoute;
