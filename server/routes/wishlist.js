@@ -1,32 +1,42 @@
 const router = require("express").Router();
-const  Product  = require("../models/product");
+const  Wishlist  = require("../models/wishlist");
 const upload = require("../middleware/upload");
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
 
-  router.post("/add",upload.single("file"),async(request, response)=> {
+  router.post("/add-wishlist",upload.single("file"),async(request, response)=> {
     
-    const product = request.body;
-    const newProduct = new Product(product);
+    const wishlist = request.body;
+    const newWishlist = new Wishlist(wishlist);
     
     try {
-        await newProduct.save();
-        response.status(201).json(newProduct);
+        await newWishlist.save();
+        response.status(201).json(newWishlist);
     } catch (error) {
         response.status(400).json({message: error.message});
     }
+   
 })
 
 
-   router.get("/all",varifyToken,async(request, response)=> {
+   router.get("/get-wishlist",async(request, response)=> {
    
   try {
-       const products = await Product.find({})
+       const wishlist = await Wishlist.find({})
   
-       response.status(200).json(products)
+       response.status(200).json(wishlist)
   } catch (error) {
     response.status(404).json({message: error.message})
+  }
+})
+
+router.delete("/remove-wishlist/:id",async(request, response)=> {
+  try {
+       await Wishlist.deleteOne({_id: request.params.id});
+       response.status(200).json({message:'item deleted successfully'})
+  }catch (error) {
+      response.status(404).json({message: error.message})
   }
 })
 

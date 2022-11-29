@@ -1,32 +1,43 @@
 const router = require("express").Router();
-const  Product  = require("../models/product");
+const  Cart  = require("../models/cart");
 const upload = require("../middleware/upload");
 const jwt = require('jsonwebtoken');
 require("dotenv").config();
 
 
-  router.post("/add",upload.single("file"),async(request, response)=> {
+  router.post("/add-cart",upload.single("file"),async(request, response)=> {
     
-    const product = request.body;
-    const newProduct = new Product(product);
+    const cart = request.body;
+    const newCart = new Cart(cart);
     
     try {
-        await newProduct.save();
-        response.status(201).json(newProduct);
+        await newCart.save();
+        response.status(201).json(newCart);
     } catch (error) {
         response.status(400).json({message: error.message});
     }
+   
 })
 
 
-   router.get("/all",varifyToken,async(request, response)=> {
+   router.get("/get-cart",async(request, response)=> {
    
   try {
-       const products = await Product.find({})
+       const cart = await Cart.find({})
   
-       response.status(200).json(products)
+       response.status(200).json(cart)
   } catch (error) {
     response.status(404).json({message: error.message})
+  }
+})
+
+router.delete("/remove-cart/:id",async(request, response)=> {
+ 
+  try {
+       await Cart.deleteOne({_id: request.params.id});
+       response.status(200).json({message:'item deleted successfully'})
+  }catch (error) {
+      response.status(404).json({message: error.message})
   }
 })
 

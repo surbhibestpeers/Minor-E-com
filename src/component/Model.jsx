@@ -5,9 +5,12 @@ import {FaAmazonPay} from 'react-icons/fa';
 import {MdReplay} from 'react-icons/md';
 import {CiDeliveryTruck} from 'react-icons/ci';
 import {BsShieldCheck} from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import {add_cart} from './Redux/actions/actions';
 
 const Model = ({data}) => {
-  console.log("????????????",data)
+ 
+  const dispatch = useDispatch()
 
   const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
@@ -18,6 +21,11 @@ const Model = ({data}) => {
          setView(data)
          setFullscreen(true)
     },[data])
+
+    const send = (e)=>{
+      dispatch(add_cart(e));
+      setShow(false)
+    }
 
   return (
     <div>
@@ -32,7 +40,7 @@ const Model = ({data}) => {
               </div>
             
             <div className='model_btn'>
-              <button className='add_cart'>Add to Cart</button>
+              <button className='add_cart'  onClick={()=> send(view)}>Add to Cart</button>
               <button className='buy'>Buy Now</button>
             </div>
           </div>

@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 import axios from 'axios';
 import "./styles.css";
 import {useDispatch} from 'react-redux';
-import { ADD } from './Redux/actions/actions';
+import { add_cart } from './Redux/actions/actions';
 import Model from './Model';
 
 
@@ -33,7 +33,7 @@ const Cards = () => {
   const dispatch = useDispatch();
 
   const send = (e)=>{
-    dispatch(ADD(e));
+    dispatch(add_cart(e));
   }
 
   const show=(e)=> {

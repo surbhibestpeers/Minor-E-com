@@ -5,6 +5,9 @@ const Connection = require('./db');
 const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/product");
+const cartRoutes = require("./routes/cart");
+const wishlistRoutes = require("./routes/wishlist");
+
  //let { expressjwt: jwt } = require("express-jwt");
 require("dotenv").config();
 Connection();
@@ -23,6 +26,7 @@ const PORT = 8000;
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/product", productRoutes);
-
+app.use("/api/cart", cartRoutes);
+app.use("/api/wishlist", wishlistRoutes);
 
 app.listen(PORT, ()=> console.log(`server is running successfully at PORT ${PORT}`))

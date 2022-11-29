@@ -371,3 +371,65 @@ display: flex;
 .size_1 {
     width:60%
 }
+.cart_head {
+    background-color: #2b7466;
+    color:#fff;
+
+}
+.detail {
+    padding-left: 20px;
+}
+.cart_btn {
+    margin-top:20px;
+    display:flex;
+    margin-bottom: 1rem;
+}
+.cbtn_1 {
+    width: 12rem;
+    height:2rem;
+    border:none;
+    background-color: #2b7466;
+    color:#fff; 
+}
+.cbtn_2 {
+    width: 12rem;
+    height:2rem;
+    border:none;
+    background-color: black;
+    color:#fff; 
+}
+.cbtn_2:hover {
+    background-color: rgb(39, 38, 38);
+}
+.cbtn_1:hover  {
+    background-color: #1e5348;
+   
+}
+.rate {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.rate_1 {
+    display: flex;
+    justify-content: space-between; 
+}
+.free {
+    color:rgb(15, 131, 15)
+}
+.place {
+    width:100%;
+    height:3rem;
+    background-color: rgb(253, 125, 27);
+    color:'#fff';
+    border:none;
+
+}
+.wish_btn {
+    margin-left: 2rem;
+    width: 12rem;
+    height:3rem;
+    border:none;
+    background-color: #2b7466;
+    color:#fff; 
+}
