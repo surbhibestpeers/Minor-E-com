@@ -4,8 +4,8 @@ const autoIncrement = require('mongoose-auto-increment')
 const productSchema = new mongoose.Schema({
   name:{type:'String',required:true},
   brand:{type:'String', required:true},
-  price:{type:'String', required:true},
-  qty:{type:'String', required:true},
+  price:{type:'number', required:true},
+  qty:{type:'number', required:true},
   color:{type:'String', required:true},
   description:{type:'String', required:true},
   file:

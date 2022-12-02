@@ -6,7 +6,7 @@ require("dotenv").config();
 
 
   router.post("/add",upload.single("file"),async(request, response)=> {
-    
+    console.log(request.body)
     const product = request.body;
     const newProduct = new Product(product);
     
@@ -19,7 +19,7 @@ require("dotenv").config();
 })
 
 
-   router.get("/all",varifyToken,async(request, response)=> {
+   router.get("/all",async(request, response)=> {
    
   try {
        const products = await Product.find({})
