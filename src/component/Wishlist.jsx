@@ -23,7 +23,7 @@ const WishList = () => {
 
   return (
     <div>
-     <Offcanvas show={show} onHide={handleClose} placement='top'>
+     <Offcanvas show={show} onHide={handleClose} placement='top' >
         <Offcanvas.Header closeButton className='cart_head'>
           <Offcanvas.Title>My Wishlist</Offcanvas.Title>
         </Offcanvas.Header>

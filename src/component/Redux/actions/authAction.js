@@ -17,6 +17,8 @@ export const registration =(user)=>{
 export const login =(user)=>{
   return dispatch =>{
       axios.post("http://localhost:8000/api/auth",user).then((res)=>{
+       console.log(".....", res.data)
+       window.localStorage.setItem('userrecord',JSON.stringify(res.data))
           dispatch(loginUser(res.data))
       }).catch((err)=>{
           console.log(err);

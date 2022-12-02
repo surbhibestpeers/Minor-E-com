@@ -7,15 +7,15 @@
 
 .signUp_main {
     background-color:#3bb19b;
-    width:40%;
+    /* width:40%; */
     color:#fff;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     border:none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
    
-    margin:auto;
-    position: relative;
-    margin-top: 2rem;
+    /* margin:auto; */
+    /* position: relative; */
+    /* margin-top: 2rem; */
     padding:20px;
 }
 .input_position {
@@ -72,13 +72,14 @@ input {
 	border: none;
 	outline: none;
 	padding: 12px 0;
-	background-color: white;
+	background-color: #3bb19b;
 	/* border-radius: 20px; */
 	width: 120px;
 	font-weight: bold;
 	font-size: 14px;
 	cursor: pointer;
 	margin-right: 20px;
+    color:#fff;
 }
 link {
     color:#000
@@ -432,4 +433,14 @@ display: flex;
     border:none;
     background-color: #2b7466;
     color:#fff; 
+}
+.toast {
+   position:relative;
+}
+.qty_btn {
+  border-radius: 50%; 
+  border:none;
+  background-color: #2b7466;
+  color:#fff;
+  margin: 5px;
 }

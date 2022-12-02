@@ -19,6 +19,12 @@ export const cartreducer = (state = INIT_STATE, action) => {
                 carts:  action.payload
             }
 
+            case "UPDATE_ITEM":
+            return{
+                ...state,
+                carts:  action.payload
+            }
+
 
        case "DELETE_ITEM":
         const data = state.carts.filter((el)=>el._id !== action.payload);

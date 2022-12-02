@@ -2,6 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 function Slider() {
   return (
+    <div >
     <Carousel>
       <Carousel.Item interval={2000}>
         <img
@@ -28,6 +29,7 @@ function Slider() {
         
       </Carousel.Item>
     </Carousel>
+    </div>
   );
 }
 

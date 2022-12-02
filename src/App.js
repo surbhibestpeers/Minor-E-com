@@ -1,27 +1,20 @@
-
-import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import SignUp from './component/SignUp';
-import SignIn from './component/SignIn';
-import MainPage from './component/MainPage';
-import Cards from './component/Card';
-import ProtectedRoute from './component/ProtectedRouter';
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainPage from "./component/MainPage";
+import Cards from "./component/Card";
+// import ProtectedRoute from './component/ProtectedRouter';
+import AddProduct from "./component/Add";
 
 function App() {
   return (
     <div className="App">
-       <Router>
+      <Router>
         <Routes>
-          <Route path="/signUp" element={<SignUp/>}/>
-          <Route path="/signIn" element={<SignIn/>}/>
-          <Route path="/" element={
-          <ProtectedRoute><MainPage/></ProtectedRoute>}/>
-          
-           
-          <Route path="/card" element={<Cards/>}/>
-          </Routes>
-          </Router>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/add" element={<AddProduct />} />
+          <Route path="/card" element={<Cards />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

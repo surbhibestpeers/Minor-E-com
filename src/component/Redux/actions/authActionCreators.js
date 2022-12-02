@@ -8,7 +8,7 @@ export const registerUser = (user)=> {
 }
 
 export const loginUser= (user)=> {
-   console.log("logggggg",user)
+  
   return {
       type:'LOGIN_USER',
       payload:user

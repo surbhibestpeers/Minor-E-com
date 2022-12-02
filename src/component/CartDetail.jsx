@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useSelector,useDispatch} from 'react-redux';
-import { remove_cart, add_wishlist,get_cart } from './Redux/actions/actions';
+import { remove_cart, add_wishlist,get_cart, update_cart } from './Redux/actions/actions';
+import axios from 'axios';
 
 const CartDetail = () => {
 
@@ -10,6 +11,8 @@ const CartDetail = () => {
   const handleClose = () => setShow(false);
 
   const getdata = useSelector((state) => state.cartreducer.carts);
+
+  const[cart,setCart]=useState(getdata)
   
   const dispatch = useDispatch()
   const dlt = (e) => {
@@ -25,25 +28,44 @@ const CartDetail = () => {
     dispatch(get_cart())
     
   };
-
-  
-  
+ 
   useEffect(() => { 
+    if(cart.length > 0) {
     const total = () => {
       let price = 0;
-      getdata.map((ele) => {
+      cart.map((ele) => {
         return(
-        price = parseInt(ele.price) + parseInt(price)
+        price = parseInt(ele.price) * ele.qty + parseInt(price)
         )
       });
       setPrice(price);
     };
     total();
-  }, [getdata]);
+  } 
+  }, [cart]);
+
+  const increment = (e) => {
    
+    setCart(cart=> 
+      cart.map((item)=> 
+        e === item._id ? {...item,qty: item.qty + ( item.qty < 10 ? 1 : 0)}: item)
+      )
+      axios.put(`http://localhost:8000/api/cart/update-cart/${e}`,cart).then((res)=> {
+        console.log(res.data)  
+       }) 
+  };
 
-
-
+  const decrement = (e) => {
+    
+    setCart(cart=> 
+      cart.map((item)=> 
+        e === item._id ? {...item,qty: item.qty - ( item.qty > 1 ? 1 : 0)}: item
+      ))
+      axios.put(`http://localhost:8000/api/cart/update-cart/${e}`,cart).then((res)=> {
+        console.log(res.data)  
+       }) 
+  };
+   
   return (
     <div>
      <Offcanvas show={show} onHide={handleClose} placement='end'>
@@ -51,14 +73,15 @@ const CartDetail = () => {
           <Offcanvas.Title>My Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {getdata.length > 0 ? (<>
-            {getdata.map((e)=> {
-              return (<div style={{backgroundColor:'rgb(255, 249, 249)', padding:'10px'}}>
-                <div style={{display:'flex'}}>
+          {cart.length > 0 ? (<>
+            {cart.map((e,index)=> {
+              return (<div style={{backgroundColor:'rgb(255, 249, 249)', padding:'10px'}} key={index}>
+                <div style={{display:'flex'}} >
                  <img src={e.file} alt="cart_item" width='80'/>
                  <div className='detail'>
                     <p>{e.name}</p>
                     <p>M.R.P: &#8377; {e.price}/-</p>
+                    <p>Quantity: <button className='qty_btn' onClick={()=>decrement(e._id)}>-</button>{ e.qty }<button className='qty_btn' onClick={()=>increment(e._id)}>+</button></p>
                  </div>
                 </div>
                 <div className='cart_btn'>

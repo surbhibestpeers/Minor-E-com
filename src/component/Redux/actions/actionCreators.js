@@ -26,6 +26,16 @@ export const remove = (id)=> {
   }
 }
 
+export const update = (id)=> {
+
+  return {
+      type:'UPDATE_ITEM',
+      payload:id
+
+  }
+}
+
+
 export const wishlist = (item) => {
   
   return {
@@ -35,7 +45,7 @@ export const wishlist = (item) => {
 }
 
 export const remove_wishlist= (id)=> {
-  console.log("rrrrrrrr",id)
+ 
   return {
       type:'REMOVE_ITEM',
       payload:id

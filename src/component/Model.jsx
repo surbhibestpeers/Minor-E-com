@@ -22,10 +22,19 @@ const Model = ({data}) => {
          setFullscreen(true)
     },[data])
 
-    const send = (e)=>{
+    const send = (e, id) => {
+      let d = e;
+      d.user_id = id;
+      console.log(d);
       dispatch(add_cart(e));
-      setShow(false)
-    }
+    };
+  
+    const loggedInUser = localStorage.getItem("userrecord");
+  if (loggedInUser) {
+    var userid = JSON.parse(localStorage.getItem('userrecord')).user;
+  }
+  
+  useEffect(() => { }, [loggedInUser]);
 
   return (
     <div>
@@ -40,7 +49,7 @@ const Model = ({data}) => {
               </div>
             
             <div className='model_btn'>
-              <button className='add_cart'  onClick={()=> send(view)}>Add to Cart</button>
+              <button className='add_cart'  onClick={()=> send(view,userid._id)}>Add to Cart</button>
               <button className='buy'>Buy Now</button>
             </div>
           </div>
