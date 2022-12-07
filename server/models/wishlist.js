@@ -4,11 +4,11 @@ const autoIncrement = require('mongoose-auto-increment')
 const wishlistSchema = new mongoose.Schema({
   user_id:{type:String,required:true},
   name:{type:'String',required:true},
-  brand:{type:'String', required:true},
+  // brand:{type:'String', required:true},
   price:{type:'number', required:true},
   qty:{type:'number', required:true},
-  color:{type:'String', required:true},
-  description:{type:'String', required:true},
+  // color:{type:'String', required:true},
+  // description:{type:'String', required:true},
   file:
   {type:'String', required:true}
 }) 

@@ -1,10 +1,8 @@
-import React,{useEffect} from 'react'
+import React,{useState} from 'react'
 import './styles.css';
 import Header from './Header';
 import Cards from './Card';  
 import Slider from './Slider';
-
-
 
 const MainPage = () => {
 

@@ -7,6 +7,7 @@ const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/product");
 const cartRoutes = require("./routes/cart");
 const wishlistRoutes = require("./routes/wishlist");
+const addressRoutes = require("./routes/address");
 
  //let { expressjwt: jwt } = require("express-jwt");
 require("dotenv").config();
@@ -28,5 +29,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/product", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/wishlist", wishlistRoutes);
+app.use("/api/address",addressRoutes)
 
 app.listen(PORT, ()=> console.log(`server is running successfully at PORT ${PORT}`))

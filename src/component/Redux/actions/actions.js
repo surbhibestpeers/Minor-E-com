@@ -7,10 +7,13 @@ import {
   wishlist,
   remove_wishlist,
   get_wishlist,
+  saveAddress,
+  getAddress,
+  removeAdd
 } from "./actionCreators";
 
 export const add_cart = (record) => {
-    console.log(record)
+    
   return (dispatch) => {
     axios
       .post("http://localhost:8000/api/cart/add-cart", record)
@@ -37,8 +40,9 @@ export const remove_cart = (id) => {
 };
 
 export const update_cart = (id,item) => {
+  
   return dispatch => {
-       axios.patch(`http://localhost:8000/api/cart/update-cart/${id}`, item).then((res)=> {
+       axios.put(`http://localhost:8000/api/cart/update-cart/${id}`, item).then((res)=> {
           dispatch(update(res.data))
        }).catch((err)=> {
           console.log(err)
@@ -117,6 +121,59 @@ export const wishlist_get = () => {
           });
         }
         dispatch(get_wishlist(arr));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const add_Address = (record) => {
+    
+  return (dispatch) => {
+    axios
+      .post("http://localhost:8000/api/address/addAddress", record)
+      .then((res) => {
+        dispatch(saveAddress(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const get_Address = () => {
+  return (dispatch) => {
+    axios
+      .get("http://localhost:8000/api/address/getAddress")
+      .then((res) => {
+        let arr = [];
+        let list = res.data;
+        {
+          list.map((e) => {
+            if (
+              e.user_id ===
+              JSON.parse(localStorage.getItem("userrecord")).user._id
+            ) {
+              arr.push(e);
+            }
+          });
+        }
+        dispatch(getAddress(arr));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const removeAddress = (id) => {
+
+  return (dispatch) => {
+    axios
+      .delete(`http://localhost:8000/api/address/removeAddress/${id}`)
+      .then((res) => {
+        dispatch(removeAdd(res.data));
       })
       .catch((err) => {
         console.log(err);

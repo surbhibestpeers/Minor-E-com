@@ -26,15 +26,37 @@ export const remove = (id)=> {
   }
 }
 
-export const update = (id)=> {
-
+export const update = (item)=> {
+   
   return {
       type:'UPDATE_ITEM',
-      payload:id
+      payload:item
 
   }
 }
 
+export const saveAddress = (item)=> {
+  return {
+    type:'ADDRESS_SAVE',
+    payload:item
+  }
+}
+
+export const getAddress = (item) => {
+  return {
+      type: "GET_ADDRESS",
+      payload: item
+  }
+}
+
+export const removeAdd = (id)=> {
+ 
+  return {
+      type:'DELETE_ADDRESS',
+      payload:id
+
+  }
+}
 
 export const wishlist = (item) => {
   
@@ -59,3 +81,4 @@ export const get_wishlist = (item) => {
       payload: item
   }
 }
+

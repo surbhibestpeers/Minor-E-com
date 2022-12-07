@@ -21,9 +21,9 @@ const WishList = () => {
    dispatch(wishlist_get())
   },[ dispatch])
 
-  return (
+  return ( 
     <div>
-     <Offcanvas show={show} onHide={handleClose} placement='top' >
+     <Offcanvas show={show} onHide={handleClose} placement='end' >
         <Offcanvas.Header closeButton className='cart_head'>
           <Offcanvas.Title>My Wishlist</Offcanvas.Title>
         </Offcanvas.Header>

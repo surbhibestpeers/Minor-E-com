@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 import "./styles.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add_cart } from "./Redux/actions/actions";
 import Model from "./Model";
 
@@ -10,6 +10,8 @@ const Cards = () => {
   const [data, setData] = useState([]);
   const [record, setRecord] = useState("");
   const [display, setDisplay] = useState(false);
+
+  const getdata = useSelector((state) => state.cartreducer.carts);
 
   const products = () => {
     axios
@@ -28,8 +30,7 @@ const Cards = () => {
 
   const send = (e, id) => {
     let d = e;
-    d.user_id = id;
-    console.log(d);
+    d.user_id = id; 
     dispatch(add_cart(e));
   };
 

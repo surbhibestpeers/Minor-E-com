@@ -1,6 +1,7 @@
 const INIT_STATE = {
     carts: [],
-    wishlist: []
+    wishlist: [],
+    address: []
 };
 
 
@@ -51,7 +52,27 @@ export const cartreducer = (state = INIT_STATE, action) => {
                         ...state,
                         wishlist: action.payload
                     }
-        
+
+               case "ADDRESS_SAVE":
+                return{
+                    ...state,
+                    address: [...state.address, action.payload]
+                }
+               
+                case "GET_ADDRESS":
+            return{
+                ...state,
+                address:  action.payload
+            }
+
+            case "DELETE_ADDRESS":
+                console.log(state.address)
+                const remove = state.address.filter((el)=>el._id !== action.payload);
+                return{
+                  ...state,
+                  address:remove
+                }
+
         default:
             return state
     }

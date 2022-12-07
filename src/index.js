@@ -37,7 +37,7 @@ root.render(
 // //const store = createStore(rootred, applyMiddleware(thunk))
 
 
-// import {store, persistor} from './component/Redux/store';
+// import {store, persistor } from './component/Redux/store';
 // import { PersistGate } from 'redux-persist/integration/react'
 
 

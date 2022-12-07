@@ -67,7 +67,7 @@ const AuthModal = (props) => {
       
                 <div className='input_position'>
                     <p>First Name:</p>
-                    <input  {...register("firstname", {
+                    <input className='input_auth' {...register("firstname", {
                       required: true,
                       pattern: /^[a-zA-Z ]*$/,
                     })}
@@ -78,7 +78,7 @@ const AuthModal = (props) => {
                 </div>
                 <div className='input_position'>
                     <p>Last Name:</p>
-                    <input  {...register("lastname", {
+                    <input className='input_auth' {...register("lastname", {
                       required: true,
                       pattern: /^[a-zA-Z ]*$/,
                     })}
@@ -89,7 +89,7 @@ const AuthModal = (props) => {
                 </div>
                 <div className='input_position'>
                     <p>Email:</p>
-                    <input {...register("email", {
+                    <input className='input_auth' {...register("email", {
                     required: true,
                     pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
                   })}
@@ -103,7 +103,7 @@ const AuthModal = (props) => {
                 </div>
                 <div className='input_position'>
                     <p>Password:</p>
-                    <input{...register("password", {
+                    <input className='input_auth'{...register("password", {
                       required: true,
                     })}
                   />
@@ -114,7 +114,7 @@ const AuthModal = (props) => {
                
             <div className='input_position'>
               <p>Upload photo</p>
-            <input onChange={(event)=>setIcon(event)} accept="image/*"  multiple type="file" />
+            <input className='input_auth' onChange={(event)=>setIcon(event)} accept="image/*"  multiple type="file" />
         <Avatar
         alt="Remy Sharp"
         src={icon.filename}
@@ -141,11 +141,11 @@ const AuthModal = (props) => {
          
            <div className='input_position'>
                <p>Email:</p>
-               <input type="email" name="email" value={data.email} onChange={handleChange}/>
+               <input className='input_auth'  type="email" name="email" value={data.email} onChange={handleChange}/>
            </div>
            <div className='input_position'>
              <p>Password:</p>
-               <input  type="password" name="password" value={data.password} onChange={handleChange}/>
+               <input className='input_auth' type="password" name="password" value={data.password} onChange={handleChange}/>
            </div>
            
        
