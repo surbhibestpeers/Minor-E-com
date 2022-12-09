@@ -5,12 +5,14 @@ import {FaAmazonPay} from 'react-icons/fa';
 import {MdReplay} from 'react-icons/md';
 import {CiDeliveryTruck} from 'react-icons/ci';
 import {BsShieldCheck} from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
-import {add_cart} from './Redux/actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import {add_cart, get_cart,update_cart} from './Redux/actions/actions';
 
 const Model = ({data}) => {
  
   const dispatch = useDispatch()
+
+  const getdata = useSelector((state) => state.cartreducer.carts);
 
   const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
@@ -22,11 +24,34 @@ const Model = ({data}) => {
          setFullscreen(true)
     },[data])
 
+
+  useEffect(() => {
+    dispatch(get_cart());
+  }, [dispatch]);
+
+  const increment = (e) => {
+    
+    let getdatas = getdata.map((item) =>
+      e == item._id
+        ? { ...item, qty: item.qty + (item.qty < 10 ? 1 : 0) }
+        : item
+    );
+
+    //console.log(cart)
+    console.log(e, getdatas)
+    dispatch(update_cart(e, getdatas));
+  };
+
     const send = (e, id) => {
       let d = e;
       d.user_id = id;
-      console.log(d);
-      dispatch(add_cart(e));
+  
+      if (getdata.find((x) => x.product_id === e.product_id)) {
+       let newData = getdata.find((x) => x.product_id === e.product_id)
+         increment(newData._id);
+      } else {
+        dispatch(add_cart(e));
+      }
     };
   
     const loggedInUser = localStorage.getItem("userrecord");

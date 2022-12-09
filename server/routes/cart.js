@@ -12,6 +12,7 @@ router.post("/add-cart", upload.single("file"), async (request, response) => {
   const newCart = new Cart(
    
    {
+    product_id:request.body.product_id,
   user_id: request.body.user_id,
   name: request.body.name,
   price: request.body.price,
@@ -63,6 +64,15 @@ router.put("/update-cart/:id", async (request, response) => {
       response.status(409).json({message: error.message})
   }
 })
+
+router.delete("/removeall/:id", async (request, response) => {
+  try {
+    await Cart.deleteMany({ user_id: request.params.id });
+    response.status(200).json({ message: "item deleted successfully" });
+  } catch (error) {
+    response.status(404).json({ message: error.message });
+  }
+});
 
 function varifyToken(req, res, next) {
   let tokens = req.headers["authorization"];

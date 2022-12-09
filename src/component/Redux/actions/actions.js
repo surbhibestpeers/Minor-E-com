@@ -9,15 +9,15 @@ import {
   get_wishlist,
   saveAddress,
   getAddress,
-  removeAdd
+  removeAdd, clearCart
 } from "./actionCreators";
 
 export const add_cart = (record) => {
-    
   return (dispatch) => {
     axios
       .post("http://localhost:8000/api/cart/add-cart", record)
       .then((res) => {
+        
         dispatch(ADD(res.data));
       })
       .catch((err) => {
@@ -39,10 +39,26 @@ export const remove_cart = (id) => {
   };
 };
 
+export const remove_all = (id) => {
+  return (dispatch) => {
+    axios
+      .delete(`http://localhost:8000/api/cart/removeall/${id}`)
+      .then((res) => {
+        dispatch(clearCart(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+
+
 export const update_cart = (id,item) => {
-  
+    
   return dispatch => {
        axios.put(`http://localhost:8000/api/cart/update-cart/${id}`, item).then((res)=> {
+        console.log(res)
           dispatch(update(res.data))
        }).catch((err)=> {
           console.log(err)
@@ -56,17 +72,17 @@ export const get_cart = () => {
       .get("http://localhost:8000/api/cart/get-cart")
       .then((res) => {
         let arr = [];
-        let list = res.data;
-        {
-          list.map((e) => {
-            if (
-              e.user_id ===
-              JSON.parse(localStorage.getItem("userrecord")).user._id
-            ) {
-              arr.push(e);
-            }
-          });
-        }
+        let list = res.data 
+
+         list.forEach((e) => {
+          
+            if (e.user_id === JSON.parse(localStorage.getItem("userrecord")).user._id) {
+              arr.push(e)
+            } 
+          
+          } 
+          )
+        
         dispatch(get(arr));
       })
       .catch((err) => {
@@ -110,16 +126,17 @@ export const wishlist_get = () => {
       .then((res) => {
         let arr = [];
         let list = res.data;
-        {
-          list.map((e) => {
+        
+          list.forEach((e) => {
             if (
               e.user_id ===
               JSON.parse(localStorage.getItem("userrecord")).user._id
             ) {
+              
               arr.push(e);
             }
           });
-        }
+        
         dispatch(get_wishlist(arr));
       })
       .catch((err) => {
@@ -149,8 +166,8 @@ export const get_Address = () => {
       .then((res) => {
         let arr = [];
         let list = res.data;
-        {
-          list.map((e) => {
+        
+          list.forEach((e) => {
             if (
               e.user_id ===
               JSON.parse(localStorage.getItem("userrecord")).user._id
@@ -158,7 +175,7 @@ export const get_Address = () => {
               arr.push(e);
             }
           });
-        }
+        
         dispatch(getAddress(arr));
       })
       .catch((err) => {

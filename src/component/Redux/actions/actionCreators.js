@@ -17,6 +17,7 @@ export const get = (item) => {
 }
 
 
+
 export const remove = (id)=> {
 
   return {
@@ -26,8 +27,16 @@ export const remove = (id)=> {
   }
 }
 
+ export const clearCart = (id)=> {
+  return {
+    type:'CLEAR_CART',
+    payload:id
+  }
+ }
+
+
 export const update = (item)=> {
-   
+   console.log(item)
   return {
       type:'UPDATE_ITEM',
       payload:item

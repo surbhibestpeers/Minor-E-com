@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const autoIncrement = require("mongoose-auto-increment");
 
 const cartSchema = new mongoose.Schema({
+  product_id:{type:String, required:true},
   user_id: { type: String, required: true },
   name: { type: String, required: true },
   // brand: { type: String, required: true },

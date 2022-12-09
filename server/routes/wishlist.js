@@ -19,7 +19,6 @@ require("dotenv").config();
    
 })
 
-
    router.get("/get-wishlist",async(request, response)=> {
    
   try {
@@ -33,7 +32,7 @@ require("dotenv").config();
 
 router.delete("/remove-wishlist/:id",async(request, response)=> {
   try {
-       await Wishlist.deleteOne({_id: request.params.id});
+       await Wishlist.deleteOne({product_id: request.params.id});
        response.status(200).json({message:'item deleted successfully'})
   }catch (error) {
       response.status(404).json({message: error.message})
@@ -44,7 +43,6 @@ router.delete("/remove-wishlist/:id",async(request, response)=> {
 function varifyToken(req,res,next) {
   let tokens = req.headers['authorization'];
  
-  
   if(tokens){
      tokens = tokens.split(' ')[1]
    

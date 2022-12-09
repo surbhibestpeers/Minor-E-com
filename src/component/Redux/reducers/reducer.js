@@ -7,6 +7,7 @@ const INIT_STATE = {
 
 export const cartreducer = (state = INIT_STATE, action) => {
     switch (action.type) {
+        
         case "ADD_CART":
             return{
                 ...state,
@@ -26,13 +27,21 @@ export const cartreducer = (state = INIT_STATE, action) => {
                 carts:  action.payload
             }
 
-
+ 
        case "DELETE_ITEM":
         const data = state.carts.filter((el)=>el._id !== action.payload);
         return{
           ...state,
           carts:data
         }
+
+        case "CLEAR_CART": 
+        const datas = state.carts.filter((el)=>el.user_id !== action.payload);
+        return{
+          ...state,
+          carts:datas
+        }
+
 
         case "WISHLIST_CART":
             return{

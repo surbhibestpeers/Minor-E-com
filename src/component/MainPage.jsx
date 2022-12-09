@@ -1,14 +1,15 @@
-import React,{useState} from 'react'
+import React from 'react'
 import './styles.css';
-import Header from './Header';
 import Cards from './Card';  
 import Slider from './Slider';
+import Head from './Head'
 
 const MainPage = () => {
 
       return (
         <div>
-          <Header/>
+          {/* <Header/> */}
+          <Head/>
           <div style={{paddingTop:'4.5rem'}}>
           <Slider/>
           </div> 

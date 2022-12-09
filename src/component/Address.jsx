@@ -3,8 +3,7 @@ import { AiFillHome } from "react-icons/ai";
 import { FaBuilding } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import styled from "styled-components";
-import { saveAddress } from "./Redux/actions/actionCreators";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { add_Address } from "./Redux/actions/actions";
 
@@ -31,11 +30,8 @@ const CssTextField = styled(TextField)({
   },
 });
 
-
-
 const Address = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [addressInfo, setAddressInfo] = useState({
     name: "",
     phone: "",
@@ -51,25 +47,25 @@ const Address = () => {
 
   const loggedInUser = localStorage.getItem("userrecord");
   if (loggedInUser) {
-    var userid = JSON.parse(localStorage.getItem('userrecord')).user;
+    var userid = JSON.parse(localStorage.getItem("userrecord")).user;
   }
-  
-  useEffect(() => { }, [loggedInUser]);
+
+  useEffect(() => {}, [loggedInUser]);
 
   const handleChange = (event) => {
     setAddressInfo({ ...addressInfo, [event.target.name]: event.target.value });
   };
 
-  const handleSave = (e, id)=>{
+  const handleSave = (e, id) => {
     // event.preventDefault();
-     let d = e;
-     d.user_id = id; 
-     dispatch(add_Address(e));
-    
+    let d = e;
+    d.user_id = id;
+    dispatch(add_Address(e));
+
     console.log(e);
-    navigate('/chooseadd')
+    navigate("/chooseadd");
   };
- 
+
   return (
     <div className="main_add">
       <div className="head_add">
@@ -97,14 +93,14 @@ const Address = () => {
           className="textField"
           value={addressInfo.pincode}
           name="pincode"
-          onChange={(event)=>handleChange(event)}
+          onChange={(event) => handleChange(event)}
         />
         <CssTextField
           label="State (Required)*"
           className="textField"
           value={addressInfo.state}
           name="state"
-          onChange={(event)=>handleChange(event)}
+          onChange={(event) => handleChange(event)}
         />
 
         <CssTextField
@@ -112,14 +108,14 @@ const Address = () => {
           className="textField"
           value={addressInfo.city}
           name="city"
-          onChange={(event)=>handleChange(event)}
+          onChange={(event) => handleChange(event)}
         />
         <CssTextField
           label="House No., Building Name (Required)*"
           className="textField"
           name="house"
           value={addressInfo.house}
-          onChange={(event)=>handleChange(event)}
+          onChange={(event) => handleChange(event)}
         />
         <CssTextField
           label="Road name, Area, Colony (Required)*"
@@ -127,38 +123,36 @@ const Address = () => {
           className="textField"
           value={addressInfo.area}
           name="area"
-          onChange={(event)=>handleChange(event)}
+          onChange={(event) => handleChange(event)}
         />
 
         <p className="text_add">Type of address </p>
         <div className="but_add">
           <div>
-          <input type="radio" value='home' name='type'onChange={(event)=>handleChange(event)}/> <AiFillHome/> Home
+            <input
+              type="radio"
+              value="home"
+              name="type"
+              onChange={(event) => handleChange(event)}
+            />{" "}
+            <AiFillHome /> Home
           </div>
-         
-        <div className="office" >
-        <input type="radio" value='office' name='type' onChange={(event)=>handleChange(event)}/> <FaBuilding />Office
-        </div>
-        
-          {/* <button >
-          
-            {" "}
-            <AiFillHome value={addressInfo.type} onChange={handleChange} />
-            Home
-          </button>
-          <button
-            className="btn_add"
-            style={{ marginLeft: "10px" }}
-            value={addressInfo.type}
-            onChange={handleChange}
-          >
-            {" "}
-            <FaBuilding />
-            work
-          </button> */}
-        </div>
 
-        <button className="save_add" onClick={()=>handleSave(addressInfo,userid._id)}>
+          <div className="office">
+            <input
+              type="radio"
+              value="office"
+              name="type"
+              onChange={(event) => handleChange(event)}
+            />{" "}
+            <FaBuilding />
+            Office
+          </div>
+        </div>
+        <button
+          className="save_add"
+          onClick={() => handleSave(addressInfo, userid._id)}
+        >
           Save Address
         </button>
       </form>

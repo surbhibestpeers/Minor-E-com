@@ -1,11 +1,9 @@
 import React,{useEffect,useState} from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {CiCircleRemove} from 'react-icons/ci';
 import { removeAdd } from './Redux/actions/actionCreators';
 import { get_Address } from './Redux/actions/actions';
-
 
 const ChooseAdd = () => {
 
@@ -16,24 +14,9 @@ const ChooseAdd = () => {
  
   const getAdd = useSelector((state) => state.cartreducer.address);
 
-  
-  
-  // const address = () => {
-  //   axios
-  //     .get( "http://localhost:8000/api/address/getAddress" )
-  //     .then((res) => {
-  //       setRecord(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // useEffect(() => {
-  //   address();
-  // }, []);
-
   useEffect(()=> {
     dispatch(get_Address())
-  },[])
+  },[dispatch])
 
   const removeAddress=(e)=> {
     console.log(e)
@@ -45,7 +28,6 @@ const ChooseAdd = () => {
     window.localStorage.setItem('deliver',add)
     navigate('/order')
   }
-
 
   return (
     <div className="main_add">

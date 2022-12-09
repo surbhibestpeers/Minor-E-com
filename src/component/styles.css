@@ -548,3 +548,29 @@ display: flex;
     margin-bottom: 20px;
   
 }
+.p_option {
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    text-align: left;
+}
+
+@media (max-width:772px) {
+    .main_add {
+        width:90%;
+        background-color: rgb(245, 243, 237);
+        margin-top: 2rem !important;
+        margin:auto;
+    
+    }
+}
+
+.set {
+    margin-left: auto !important; 
+ }
+ .display-cart {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 900;
+    color:#2b7466
+ }
