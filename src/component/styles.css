@@ -60,6 +60,8 @@
 	justify-content: space-between;
     position:fixed; 
     z-index: 999;
+    
+    padding-right: 30px
 }
 
 .navbar h1 {
@@ -89,14 +91,32 @@ link {
    padding-top: 3rem;
    width:100%;
    overflow-x: hidden;
+  
 }
 .card_1 {
    
 display: flex;
   flex-wrap: wrap;
-    
+    width:80%;
+    margin-left: auto;
+}
+.filter_cart {
+    width:20%;
+    background-color:rgb(230,230,230) ;
+    padding: 20px;
+    /* position: fixed; */
+   
+} 
+.brand {
+    text-align: left;
+    margin-top: 20px;
 }
 
+.check_brand {
+    display: flex;
+    align-items: center;
+   line-height: 0;
+}
 .card_style{
     cursor: pointer;
     transition: .3s;
@@ -106,6 +126,17 @@ display: flex;
     width:80%;
     border: none;
     background: rgb(230,230,230);
+}
+.input_brand {
+   width:20px;
+   height:20px
+}
+.i_brand {
+    font-size: 16px;
+    padding-top: 12px;
+    padding-left: 10px;
+   
+
 }
   
   .smalltrash{
@@ -567,10 +598,89 @@ display: flex;
 
 .set {
     margin-left: auto !important; 
+    
  }
  .display-cart {
     text-align: center;
     font-size: 25px;
     font-weight: 900;
     color:#2b7466
+ }
+
+ .upi_block {
+    display: column;
+    margin:auto
+ }
+ .upi_input {
+    border: 2px solid black
+ }
+ .toggle {
+    color:#fff
+ }
+ .head_icon {
+    color:#fff;
+    margin-right:20px;
+    cursor:pointer
+ }
+ .time_zone {
+    color:#fff; 
+    line-height:0.1; 
+    padding-top:5px
+  }
+
+
+ @media (max-width:991px) {
+   .head_icon {
+    
+    color:#2b7466;
+    float: left;
+   }
+   .set {
+    display:block;
+padding:20px;
+background-color: #fff;  
+width:100vw;
+}
+.time_zone {
+    color:#2b7466;
+   
+    float: left;
+}
+.hide_icon {
+    display: none;
+}
+.space_top {
+    margin-top: -32px;
+   
+}
+.drop {
+    width:0%;
+}
+.navbar {
+    padding-right: 10px
+}
+
+ }
+ .carousel-indicators { visibility: hidden }
+ .carousel-control-prev { visibility: hidden }
+ .carousel-control-next { visibility: hidden }
+
+ .nav-link {
+    color:#fff
+ }
+
+ .nav-link:focus, .nav-link:hover::after {
+    color: #fff
+}
+.dropdown-menu.show {
+    left: 50% !important;
+    right: auto!important;
+    
+    transform: translate(-80%, 0) !important;
+  }
+  .dropdown-item {
+    color:#2b7466
+  }
+ .dropdown-toggle::after {
+    color:#fff
  }

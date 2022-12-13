@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./component/MainPage";
 import Cards from "./component/Card";
-// import ProtectedRoute from './component/ProtectedRouter';
+ import ProtectedRoute from './component/ProtectedRouter';
 import Order from "./component/Order";
 import Address from "./component/Address";
 import ChooseAdd from "./component/ChooseAdd";
@@ -16,10 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/card" element={<Cards />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/address" element={<Address />} />
-          <Route path="/chooseadd" element={<ChooseAdd />} />
-          <Route path="/payment" element={<Payment/>} />
+          <Route path="/order" element={<ProtectedRoute><Order /></ProtectedRoute>} />
+          <Route path="/address" element={<ProtectedRoute><Address /></ProtectedRoute>} />
+          <Route path="/chooseadd" element={<ProtectedRoute><ChooseAdd /></ProtectedRoute>} />
+          <Route path="/payment" element={<ProtectedRoute><Payment/></ProtectedRoute>} />
         
         </Routes>
       </Router>

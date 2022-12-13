@@ -4,7 +4,6 @@ const INIT_STATE = {
     address: []
 };
 
-
 export const cartreducer = (state = INIT_STATE, action) => {
     switch (action.type) {
         
@@ -13,7 +12,6 @@ export const cartreducer = (state = INIT_STATE, action) => {
                 ...state,
                 carts: [...state.carts, action.payload]
             }
-
 
             case "GET_CART":
             return{
@@ -41,7 +39,6 @@ export const cartreducer = (state = INIT_STATE, action) => {
           ...state,
           carts:datas
         }
-
 
         case "WISHLIST_CART":
             return{

@@ -1,5 +1,4 @@
 
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -12,6 +11,7 @@ import CartDetail from './CartDetail';
 import WishList from './Wishlist';
 import { get_cart,wishlist_get } from './Redux/actions/actions';
 import AuthModal from './AuthModal';  
+import {BsFillPersonFill} from 'react-icons/bs';
 
 const Head = () => {
 
@@ -25,6 +25,9 @@ const Head = () => {
   const [modalShow, setModalShow] = useState(false);
 
   const dispatch= useDispatch()
+
+  const date= new Date();
+  const hour = date.getHours()
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("userrecord");
@@ -61,11 +64,12 @@ const Head = () => {
   return (
     <div>
     <Navbar expand="lg" className="navbar" >
-      <Container>
+      
         <Navbar.Brand href="/" style={{color:'#fff'}}><h1>ShopDay</h1></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav"   />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="set">
+            
           <Badge
               badgeContent={getdata.length}
               color="primary"
@@ -73,7 +77,7 @@ const Head = () => {
               style={{marginRight:'20px', marginLeft:'-10px' }}
               onClick={()=>openCart()}
             >
-            <AiOutlineShoppingCart size={30} style={{color:'#fff', marginRight:'20px',cursor:'pointer'}}/>
+            <AiOutlineShoppingCart size={30} className='head_icon'/>
             </Badge>
 
             <Badge
@@ -83,10 +87,14 @@ const Head = () => {
               style={{marginRight:'20px', marginLeft:'-10px' }}
               onClick={()=>openWish()}
             >
-            <AiOutlineHeart size={30} style={{color:'#fff', marginRight:'20px',cursor:'pointer'}}/>
+              
+            <AiOutlineHeart size={30} className='head_icon'/>
             </Badge>
-            <NavDropdown style={{color:'#fff'}}  title= {prevUser ?  name : "Profile" } id="basic-nav-dropdown"   >
-
+            
+            {prevUser ? 
+            <div className='time_zone'>{hour>=12 ? hour >=16 ? <p>Good Evening</p> : <p>Good Afternoon</p> : <p>Good Morning </p>} {name}</div> : ''}
+            <NavDropdown style={{marginTop:'-5px'}}  title= {prevUser ?  '' : <BsFillPersonFill className='head_icon space_top' size={30}  />  } id="basic-nav-dropdown"  className='drop' >
+ 
               {prevUser ? <NavDropdown.Item  onClick={handleLogout}>
                 LogOut
               </NavDropdown.Item> : 
@@ -100,7 +108,7 @@ const Head = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Container>
+     
     </Navbar>
    
        <AuthModal

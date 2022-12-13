@@ -7,6 +7,7 @@ import {CiDeliveryTruck} from 'react-icons/ci';
 import {BsShieldCheck} from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import {add_cart, get_cart,update_cart} from './Redux/actions/actions';
+import ReactImageMagnify from 'react-image-magnify';
 
 const Model = ({data}) => {
  
@@ -70,7 +71,23 @@ const Model = ({data}) => {
         <Modal.Body className='modal_view'>
           <div className='div_1'>
             <div >
-              <img  src={view.file} className='modal_img' alt="mobile"/>
+              {/* <img  src={view.file} className='modal_img' alt="mobile"/> */}
+              <div style={{width:'50%', margin:'auto'}} >
+              <ReactImageMagnify {...{
+    smallImage: {
+        alt: 'mobile',
+        isFluidWidth: true,
+        src: view.file,
+         width:20
+    },
+    largeImage: {
+        src: view.file,
+        width: 1200,
+        height: 1800
+    }
+}} />
+              </div>
+              
               </div>
             
             <div className='model_btn'>

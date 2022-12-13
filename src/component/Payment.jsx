@@ -6,6 +6,9 @@ import { remove_all } from "./Redux/actions/actions";
 
 const Payment = () => {
   const [price, setPrice] = useState("");
+  const [gshow, setGshow]= useState(false)
+  const [pshow, setPshow]= useState(false)
+  const [ushow, setUshow]= useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,6 +40,23 @@ const Payment = () => {
     navigate("/");
     dispatch(remove_all(userid._id));
   };
+  const handleGshow=()=> {
+    setGshow(true)
+    setPshow(false)
+    setUshow(false)
+  }
+
+  const handlePshow=()=> {
+    setPshow(true)
+    setGshow(false)
+    setUshow(false)
+  }
+  const handleUshow=()=> {
+    setUshow(true)
+    setPshow(false)
+    setGshow(false)
+  }
+   
 
   return (
     <div className="main_add">
@@ -48,20 +68,31 @@ const Payment = () => {
           <b>Payment Options</b>
         </h5>
         <hr />
+        <div style={{display:'flex'}}>
         <div>
-          <input type="radio" name="pay" value="gpay" /> GooglePay
-          <img src="./gpay.png" width="60" alt="gpay" style={{ marginLeft: "50px" }} />
+        <div>
+          <input type="radio" name="pay" value="gpay" onClick={handleGshow}/> GooglePay
+          <img src="./gpay.png" width="60" alt="gpay" style={{ marginLeft: "50px" }} />  
         </div>
         <div>
-          <input type="radio" name="pay" value="ppay" /> PhonePe
+          <input type="radio" name="pay" value="ppay" onClick={handlePshow}/> PhonePe
           <img src="./PhonePe.png" width="80" alt="phonepe" style={{ marginLeft: "50px" }} />
         </div>
         <div>
-          <input type="radio" name="pay" value="upi" /> UPI
+          <input type="radio" name="pay" value="upi" onClick={handleUshow}/> UPI
           <img src="./upi.webp" width="40" alt="upi" style={{ marginLeft: "100px" }} />
         </div>
+        </div>
+        {gshow ?  <img src="./gpay.jpg" width="100" alt="upi" style={{ marginLeft: "100px" }} /> : " "}
+        {pshow ?  <img src="./ppay.jpeg" width="100" alt="upi" style={{ marginLeft: "100px" }} /> : " "}
+        {ushow ?  <div className="upi_block">
+                  <p>Enter UPI ID</p>
+                  <input className="upi_input"/>
+        </div>  : " "}
+        
+        </div>
       </div>
-
+      <hr/>
       <div
         style={{ display: "flex", alignItems: "flex-start", padding: "20px" }}
       >

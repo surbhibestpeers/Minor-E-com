@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 function Slider() {
   return (
     <div >
-    <Carousel>
+    <Carousel >
       <Carousel.Item interval={2000}>
         <img
           className="d-block w-100 "
@@ -14,7 +14,7 @@ function Slider() {
       </Carousel.Item>
       <Carousel.Item interval={2000}>
         <img
-          className="d-block w-100"
+          className="d-block w-100 "
           src="https://www.reliancedigital.in/medias/Realme-Narzo-50A-CLP-Banner-18-11-2022.jpg?context=bWFzdGVyfGltYWdlc3wxNzg4NDh8aW1hZ2UvanBlZ3xpbWFnZXMvaDc4L2hjYy85OTIzOTAyMDc5MDA2LmpwZ3wyN2RmMDg1YzhiYzllZjc4MzQ0MTllMzk5NDViOWZkZmE4MTg3NTc2Y2ZmZjZjZGZiNmQyNDBmZDNiYzExY2Q4"
           alt="Second slide"
         />
