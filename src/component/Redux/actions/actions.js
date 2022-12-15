@@ -9,7 +9,7 @@ import {
   get_wishlist,
   saveAddress,
   getAddress,
-  removeAdd, clearCart
+  removeAdd, clearCart, orderSave, getOrders
 } from "./actionCreators";
 
 export const add_cart = (record) => {
@@ -197,3 +197,44 @@ export const removeAddress = (id) => {
       });
   };
 };
+
+export const add_to_orders = (record) => {
+          
+  return (dispatch) => {
+    axios
+      .post("http://localhost:8000/api/order/orders",record)
+      .then((res) => {
+        dispatch(orderSave(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+};
+
+export const get_Order_detail = () => {
+  return (dispatch) => {
+    axios
+      .get("http://localhost:8000/api/order/getOrders")
+      .then((res) => {
+        let arr = [];
+        let list = res.data;
+        
+          list.forEach((e) => {
+            if (
+              e.user_id ===
+              JSON.parse(localStorage.getItem("userrecord")).user._id
+            ) {
+              arr.push(e);
+            }
+          });
+        
+        dispatch(getOrders(arr));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+

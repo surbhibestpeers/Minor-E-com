@@ -1,7 +1,8 @@
 const INIT_STATE = {
     carts: [],
     wishlist: [],
-    address: []
+    address: [],
+    orders:[]
 };
 
 export const cartreducer = (state = INIT_STATE, action) => {
@@ -78,6 +79,19 @@ export const cartreducer = (state = INIT_STATE, action) => {
                   ...state,
                   address:remove
                 }
+
+                case "ADD_ORDER":
+                    return{
+                        ...state,
+                        orders: [ ...state.orders ,action.payload ]
+                    }
+
+                        
+                case "GET_ORDERS":
+                    return{
+                        ...state,
+                        orders:  action.payload
+                    }
 
         default:
             return state

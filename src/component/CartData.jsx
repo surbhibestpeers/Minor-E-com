@@ -8,8 +8,6 @@ const CartData = () => {
   const [cart, setCart] = useState(getdata);
   const [price, setPrice] = useState("");
 
-  console.log(cart);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

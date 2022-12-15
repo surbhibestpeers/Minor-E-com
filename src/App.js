@@ -8,7 +8,6 @@ import Address from "./component/Address";
 import ChooseAdd from "./component/ChooseAdd";
 import Payment from "./component/Payment";
 
-
 function App() {
   return (
     <div className="App">
@@ -20,7 +19,7 @@ function App() {
           <Route path="/address" element={<ProtectedRoute><Address /></ProtectedRoute>} />
           <Route path="/chooseadd" element={<ProtectedRoute><ChooseAdd /></ProtectedRoute>} />
           <Route path="/payment" element={<ProtectedRoute><Payment/></ProtectedRoute>} />
-        
+          
         </Routes>
       </Router>
     </div>

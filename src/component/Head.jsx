@@ -12,6 +12,7 @@ import WishList from './Wishlist';
 import { get_cart,wishlist_get } from './Redux/actions/actions';
 import AuthModal from './AuthModal';  
 import {BsFillPersonFill} from 'react-icons/bs';
+import OrderHistory from './OrderHistory';
 
 const Head = () => {
 
@@ -23,6 +24,7 @@ const Head = () => {
   const [shownCart,setShownCart]=useState(false)
   const [showWishlist,setShowWishlist]=useState(false)
   const [modalShow, setModalShow] = useState(false);
+  const [orderHistory, setOrderHistory]=useState(false)
 
   const dispatch= useDispatch()
 
@@ -45,7 +47,6 @@ const Head = () => {
   if (loggedInUser) {
     var name = JSON.parse(localStorage.getItem('userrecord')).user.firstname;
   }
- 
   useEffect(() => { }, [loggedInUser]);
 
   const handleLogout = () => {
@@ -59,6 +60,10 @@ const Head = () => {
 
   const openWish=()=> {
     setShowWishlist(true)
+  }
+
+  const handleOrders=()=> {
+    setOrderHistory(true)
   }
 
   return (
@@ -95,9 +100,18 @@ const Head = () => {
             <div className='time_zone'>{hour>=12 ? hour >=16 ? <p>Good Evening</p> : <p>Good Afternoon</p> : <p>Good Morning </p>} {name}</div> : ''}
             <NavDropdown style={{marginTop:'-5px'}}  title= {prevUser ?  '' : <BsFillPersonFill className='head_icon space_top' size={30}  />  } id="basic-nav-dropdown"  className='drop' >
  
-              {prevUser ? <NavDropdown.Item  onClick={handleLogout}>
-                LogOut
-              </NavDropdown.Item> : 
+              {prevUser ? <>
+              <NavDropdown.Item >
+                Profile
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={handleOrders}>
+                Orders
+              </NavDropdown.Item>
+              <NavDropdown.Item  onClick={handleLogout}>
+              LogOut
+            </NavDropdown.Item>
+            </>
+              : 
               <>
               <NavDropdown.Item onClick={() => setModalShow(true)}>New User?  Sign Up</NavDropdown.Item>
               <NavDropdown.Item onClick={() => setModalShow(true)}>
@@ -115,8 +129,10 @@ const Head = () => {
       show={modalShow}
       onHide={() => setModalShow(false)}
     /> 
-        {shownCart ? <CartDetail/> : ''}
-        {showWishlist ? <WishList/> : ''}
+        
+        {orderHistory ? <OrderHistory/> : ''} 
+
+        {shownCart ? showWishlist ?  <WishList/> : <CartDetail/> : ''}
        </div>
   );
 }

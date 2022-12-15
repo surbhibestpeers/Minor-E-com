@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { remove_all } from "./Redux/actions/actions";
+import { remove_all, add_to_orders } from "./Redux/actions/actions";
 
 const Payment = () => {
   const [price, setPrice] = useState("");
@@ -14,6 +14,9 @@ const Payment = () => {
   const dispatch = useDispatch();
 
   const getdata = useSelector((state) => state.cartreducer.carts);
+
+  const getOrder = useSelector((state) => state.cartreducer.orders);
+  console.log(getOrder)
 
   const loggedInUser = localStorage.getItem("userrecord");
   if (loggedInUser) {
@@ -38,8 +41,18 @@ const Payment = () => {
   const onToken = (token) => {
     console.log(token);
     navigate("/");
+    savetohistory()
     dispatch(remove_all(userid._id));
   };
+
+  const savetohistory=()=> {
+    getdata.map((ele)=> {
+      return(
+        dispatch(add_to_orders(ele))
+      )
+    })
+  }
+
   const handleGshow=()=> {
     setGshow(true)
     setPshow(false)

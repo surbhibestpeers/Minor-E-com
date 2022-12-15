@@ -12,9 +12,7 @@ const Cards = () => {
   const [data, setData] = useState([]);
   const [record, setRecord] = useState("");
   const [display, setDisplay] = useState(false);
-  const [selectedBrand, setSelectedBrand] = useState('');
-  const [searchProduct, setSearchProduct]= useState('')
-  console.log(selectedBrand)
+  const [searchProduct, setSearchProduct]= useState('');
 
   const getdata = useSelector((state) => state.cartreducer.carts);
 
@@ -89,33 +87,54 @@ const Cards = () => {
   };
 
   const hightolow = () => {
+
     const pricelhtl = [...data].sort((a, b) => a.price - b.price).reverse();
     setData(pricelhtl);
   };
 
+  let newValue = []
   const filterByBrand = val => {
-    
-    let result =  data.filter(e => e.brand === val)
-    setData(result)
+     newValue.push(val)
+     console.log(newValue)
+    // let values = newValue
+     let result =  data.filter(e => e.brand === val)
+     setData(result)
+  }
+  const handleSearch=(e)=> {
+    console.log(e)
+    setSearchProduct(e)
+    setData(newRecord)
   }
 
-   
-  {data.filter((value) => {
+   let newRecord = data.filter((value) => { 
       if (searchProduct === "") {
         return value;
       } else if (
-        value.name.toLowerCase().includes(searchProduct.toLowerCase())
+        value.name.toLowerCase().includes(searchProduct.toLowerCase()) 
       ) {
         return value;
       } else if (
-        value.category
+        value.brand
           .toLowerCase()
           .includes(searchProduct.toLowerCase())
       ) {
         return value;
       }
     })
-  }
+
+  // const handleSearch = (event) => {
+   
+  //   const query = event.target.value;
+    
+  //   let updatedList = [...data];
+   
+  //   updatedList = updatedList.filter((item) => {
+  //     return item.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+  //   });
+  
+  //   setData(updatedList);
+  // };
+
   return (
     <div className="card_main">
       <div style={{ display: "flex" }}>
@@ -129,6 +148,7 @@ const Cards = () => {
               label="Search"
               type="search"
               variant="standard"
+              onChange={(e)=>handleSearch(e.target.value)}
             />
           </div>
 
@@ -166,7 +186,7 @@ const Cards = () => {
                 className="input_brand"
                 type="checkbox"
                 onClick={lowtohigh}
-              />{" "}
+               />{" "}
               <p className="i_brand">Low to High</p>
             </div>
           </div>

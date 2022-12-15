@@ -39,9 +39,9 @@ const Order = () => {
         </div>
         {newResult.length > 0 ? (
           <>
-            {newResult.map((ele) => {
+            {newResult.map((ele, i) => {
               return (
-                <div className="o_add">
+                <div className="o_add" key={i}>
                   <div style={{ display: "flex" }}>
                     <b>{ele.name}</b>{" "}
                     <p style={{ color: "grey", marginLeft: "10px" }}>

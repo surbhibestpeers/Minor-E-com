@@ -28,6 +28,7 @@ export const remove = (id)=> {
 }
 
  export const clearCart = (id)=> {
+  console.log(id)
   return {
     type:'CLEAR_CART',
     payload:id
@@ -91,3 +92,19 @@ export const get_wishlist = (item) => {
   }
 }
 
+
+export const orderSave = (item) => {
+   console.log(item,"***********")
+  return {
+      type: "ADD_ORDER",
+      payload: item
+  }
+}
+
+export const getOrders = (item) => {
+   
+  return {
+      type: "GET_ORDERS",
+      payload: item
+  }
+}
