@@ -16,9 +16,10 @@ router.post("/",async (req,res) => {
 
         if(!user) return res.status(401).send({message:"user not found"})
         else if(user){
-            const validPassword = await bcrypt.compare(
-                req.body.password, user.password
-            );
+            // const validPassword = await bcrypt.compare(
+            //     req.body.password, user.password
+            // );
+            const validPassword = (req.body.password === user.password)
             if(!validPassword ) return res.status(401).send({message:"Invalid Password"})
             else{
                 const token = jwt.sign({id: user._id},process.env.JWT_KEY,

@@ -20,7 +20,7 @@
 }
 .input_position {
     display:flex;
-    margin:20px;
+    margin-top:20px;
     justify-content: space-around;
 }
 .form {
@@ -93,8 +93,7 @@ link {
    overflow-x: hidden;
   
 }
-.card_1 {
-   
+.card_1 { 
 display: flex;
   flex-wrap: wrap;
     width:80%;
@@ -684,3 +683,45 @@ width:100vw;
  .dropdown-toggle::after {
     color:#fff
  }
+.user_ {
+    font-size: 20px;
+}
+.user_btn {
+    border:none;
+    background-color: #fff;
+    color:#2b7466;
+    height:2rem
+}
+.err_password {
+    padding-left: 17rem;
+    color:rgb(189, 11, 11)
+}
+
+.input_auth_1 {
+    border-radius: 10px ;
+    width:60%;
+    height:2rem;
+    background-color:rgb(245, 243, 237); 
+    border:1px solid black
+
+}
+
+@keyframes shake {
+    0% {
+      margin-left: 0rem;
+    }
+    25% {
+      margin-left: 0.5rem;
+    }
+    75% {
+      margin-left: -0.5rem;
+    }
+    100% {
+      margin-left: 0rem;
+    }
+  }
+  
+  .input_auth_1:hover {
+    animation: shake 0.2s ease-in-out 0s 2;
+    box-shadow: 0 0 0.6rem #ff0000;
+  }

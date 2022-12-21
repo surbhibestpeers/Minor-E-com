@@ -1,16 +1,5 @@
-import axios from "axios";
-import {
-  ADD,
-  remove,
-  get,
-  update,
-  wishlist,
-  remove_wishlist,
-  get_wishlist,
-  saveAddress,
-  getAddress,
-  removeAdd, clearCart, orderSave, getOrders
-} from "./actionCreators";
+import {ADD,remove,get,update,wishlist,remove_wishlist,get_wishlist,saveAddress,getAddress,removeAdd, clearCart, orderSave, getOrders} from "./actionCreators";
+ import axios from "axios";
 
 export const add_cart = (record) => {
   return (dispatch) => {
@@ -51,8 +40,6 @@ export const remove_all = (id) => {
       });
   };
 };
-
-
 
 export const update_cart = (id,item) => {
     

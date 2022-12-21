@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./styles.css";
 import { useDispatch } from "react-redux";
 import { login, registration } from "./Redux/actions/authAction";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
+import "./styles.css";
 
 const AuthModal = (props) => {
   const [registers, setRegistors] = useState(false);
@@ -174,6 +174,7 @@ const AuthModal = (props) => {
                     Register
                   </b>
                 </p>
+                
                 <button className="white_btn " type="submit">
                   LogIn
                 </button>

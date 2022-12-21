@@ -15,3 +15,12 @@ export const loginUser= (user)=> {
 
   }
 }
+
+export const update= (user)=> {
+  
+  return {
+      type:'UPDATE_USER',
+      payload:user
+
+  }
+}

@@ -13,6 +13,7 @@ import { get_cart,wishlist_get } from './Redux/actions/actions';
 import AuthModal from './AuthModal';  
 import {BsFillPersonFill} from 'react-icons/bs';
 import OrderHistory from './OrderHistory';
+import Password from './Password';
 
 const Head = () => {
 
@@ -25,6 +26,7 @@ const Head = () => {
   const [showWishlist,setShowWishlist]=useState(false)
   const [modalShow, setModalShow] = useState(false);
   const [orderHistory, setOrderHistory]=useState(false)
+  const [profileShow, setProfileShow] = useState(false);
 
   const dispatch= useDispatch()
 
@@ -101,7 +103,7 @@ const Head = () => {
             <NavDropdown style={{marginTop:'-5px'}}  title= {prevUser ?  '' : <BsFillPersonFill className='head_icon space_top' size={30}  />  } id="basic-nav-dropdown"  className='drop' >
  
               {prevUser ? <>
-              <NavDropdown.Item >
+              <NavDropdown.Item onClick={() => setProfileShow(true)}>
                 Profile
               </NavDropdown.Item>
               <NavDropdown.Item onClick={handleOrders}>
@@ -128,6 +130,11 @@ const Head = () => {
        <AuthModal
       show={modalShow}
       onHide={() => setModalShow(false)}
+    /> 
+
+<Password
+      show={profileShow}
+      onHide={() => setProfileShow(false)}
     /> 
         
         {orderHistory ? <OrderHistory/> : ''} 

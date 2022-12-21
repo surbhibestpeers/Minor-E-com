@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import axios from "axios";
-import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { add_cart } from "./Redux/actions/actions";
-import Model from "./Model";
 import { get_cart, update_cart } from "./Redux/actions/actions";
 import { TextField } from "@mui/material";
+import Model from "./Model";
+import axios from "axios";
+import "./styles.css";
 
 const Cards = () => {
   const [data, setData] = useState([]);
@@ -100,9 +100,8 @@ const Cards = () => {
      let result =  data.filter(e => e.brand === val)
      setData(result)
   }
-  const handleSearch=(e)=> {
-    console.log(e)
-    setSearchProduct(e)
+  const handleSearch=(event)=> {
+    setSearchProduct(event)
     setData(newRecord)
   }
 
@@ -148,7 +147,7 @@ const Cards = () => {
               label="Search"
               type="search"
               variant="standard"
-              onChange={(e)=>handleSearch(e.target.value)}
+              onChange={(event)=>handleSearch(event.target.value)}
             />
           </div>
 

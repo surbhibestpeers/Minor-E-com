@@ -1,5 +1,5 @@
 import axios from "axios"
-import {registerUser,loginUser } from '../actions/authActionCreators';
+import {registerUser,loginUser, update } from '../actions/authActionCreators';
 
 
 
@@ -25,3 +25,17 @@ export const login =(user)=>{
       })
   }
 }
+
+
+
+export const update_user = (id,item) => {
+    console.log("???????", id,item)
+    return dispatch => {
+         axios.put(`http://localhost:8000/api/users/updateUser/${id}`, item).then((res)=> {
+          console.log(res)
+            dispatch(update(res.data))
+         }).catch((err)=> {
+            console.log(err)
+         })
+    }
+  }
